@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-try:
-        def safe_print_list(my_list=[], x=0):
-                my_list = [1,2,3]
-                for y in my_list:
-                        x+=1
-                        print(x)
-except:
-        print("error occurred")
+def safe_print_list(my_list=[], x=0):
+    try:
+        y = 0
+        while y < x:
+            print(my_list[y], end="")
+            y = y + 1
+        print("")
+    except IndexError:
+        print("")
