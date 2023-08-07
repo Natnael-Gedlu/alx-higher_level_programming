@@ -1,7 +1,7 @@
 # 0x00-python-hello_world
 
 ## Table of contents
-- [Run Python file](#0-run)
+- [Run Python file](0-run)
 
 
 ## Description 
