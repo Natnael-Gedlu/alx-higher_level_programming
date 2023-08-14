@@ -1,8 +1,7 @@
-#!/bin/bash/python3
+#!/usr/bin/python3
 
 def multiple_returns(sentence):
-    if len(sentence) == 0:
-        first_char = None
-    else:
-        first_char = sentence[0]
-    return (len(sentence), first_char)
+    if sentence == "":
+        return 0, None
+    return len(sentence), sentence[0]
+
