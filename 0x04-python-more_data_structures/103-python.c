@@ -1,49 +1,60 @@
+#include <stdio.h>
 #include <Python.h>
 
+/**
+ * print_python_list - Prints some basic info about Python lists
+ * @p: PyObject representing a Python list
+ */
 void print_python_list(PyObject *p)
 {
-    Py_ssize_t size, i;
-    PyObject *item;
+    PyListObject *list = (PyListObject *)p;
+    Py_ssize_t size = PyList_Size(p);
 
-    size = PyList_Size(p);
     printf("[*] Python list info\n");
     printf("[*] Size of the Python List = %zd\n", size);
-    printf("[*] Allocated = %zd\n", ((PyListObject *)p)->allocated);
 
-    for (i = 0; i < size; i++)
+    /* Iterate through the list */
+    for (Py_ssize_t i = 0; i < size; i++)
     {
-        item = PyList_GetItem(p, i);
-        printf("Element %zd: %s\n", i, Py_TYPE(item)->tp_name);
+        PyObject *item = PyList_GetItem(p, i);
+        const char *typeName = Py_TYPE(item)->tp_name;
+        printf("Element %zd: %s\n", i, typeName);
     }
 }
 
+/**
+ * print_python_bytes - Prints some basic info about Python bytes objects
+ * @p: PyObject representing a Python bytes object
+ */
 void print_python_bytes(PyObject *p)
 {
-    Py_ssize_t size, i;
-    char *str;
+    PyBytesObject *bytes = (PyBytesObject *)p;
+    Py_ssize_t size = PyBytes_Size(p);
 
     printf("[.] bytes object info\n");
-    if (!PyBytes_Check(p))
-    {
-        printf("  [ERROR] Invalid Bytes Object\n");
-        return;
-    }
-
-    size = PyBytes_Size(p);
-    str = PyBytes_AsString(p);
-
     printf("  size: %zd\n", size);
-    printf("  trying string: %s\n", str);
-
+    printf("  trying string: %s\n", PyBytes_AS_STRING(p));
     if (size > 10)
         size = 10;
-
     printf("  first %zd bytes: ", size);
-    for (i = 0; i < size; i++)
-    {
-        printf("%02x", str[i] & 0xff);
-        if (i < size - 1)
-            printf(" ");
-    }
-    printf("\n");
+    for (Py_ssize_t i = 0; i < size; i++)
+        printf("%02hhx%c", bytes->ob_sval[i], i < size - 1 ? ' ' : '\n');
+}
+
+int main(void)
+{
+    Py_Initialize();
+
+    PyObject *list = PyList_New(0);
+    PyObject *bytes = PyBytes_FromStringAndSize("Hello", 5);
+
+    print_python_list(list);
+    print_python_bytes(bytes);
+
+    Py_DECREF(list);
+    Py_DECREF(bytes);
+
+    Py_Finalize();
+
+    return 0;
 }
