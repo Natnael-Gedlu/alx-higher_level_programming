@@ -85,7 +85,8 @@ class Square:
 
         :param other: The other Square instance to compare.
         :type other: Square
-        :return: True if the area of self is less than the area of other, False otherwise.
+        :return: True if the area of self is less than the area of
+        other, False otherwise.
         :rtype: bool
         """
         return self.area() < other.area()
@@ -96,7 +97,8 @@ class Square:
 
         :param other: The other Square instance to compare.
         :type other: Square
-        :return: True if the area of self is less than or equal to the area of other, False otherwise.
+        :return: True if the area of self is less than or equal
+        to the area of other, False otherwise.
         :rtype: bool
         """
         return self.area() <= other.area()
@@ -107,18 +109,21 @@ class Square:
 
         :param other: The other Square instance to compare.
         :type other: Square
-        :return: True if the area of self is greater than the area of other, False otherwise.
+        :return: True if the area of self is greater than the
+        area of other, False otherwise.
         :rtype: bool
         """
         return self.area() > other.area()
 
     def __ge__(self, other):
         """
-        Compare two Square instances for greater than or equal to based on area.
+        Compare two Square instances for greater than
+        or equal to based on area.
 
         :param other: The other Square instance to compare.
         :type other: Square
-        :return: True if the area of self is greater than or equal to the area of other, False otherwise.
+        :return: True if the area of self is greater than
+        or equal to the area of other, False otherwise.
         :rtype: bool
         """
         return self.area() >= other.area()
