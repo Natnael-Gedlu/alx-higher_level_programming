@@ -17,8 +17,10 @@ class Square:
         :type size: int
         :param position: The position of the square (default is (0, 0)).
         :type position: tuple of two positive integers
-        :raises TypeError: If size is not an integer, or if position is not a tuple of two positive integers.
-        :raises ValueError: If size is less than 0, or if position values are not positive.
+        :raises TypeError: If size is not an integer,
+        or if position is not a tuple of two positive integers.
+        :raises ValueError: If size is less than 0,
+        or if position values are not positive.
         """
         self.size = size
         self.position = position
@@ -68,7 +70,8 @@ class Square:
 
         :param value: The position value to set.
         :type value: tuple of two positive integers
-        :raises TypeError: If position is not a tuple or its values are not positive integers.
+        :raises TypeError: If position is not a tuple
+        or its values are not positive integers.
         """
         if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
