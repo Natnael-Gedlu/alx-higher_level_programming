@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Define classes for a singly-linked list.
+Define a class Square.
 """
 
 
@@ -115,11 +115,3 @@ class SinglyLinkedList:
             result += str(current.data) + "\n"
             current = current.next_node
         return result.strip()
-
-
-# Example usage
-linked_list = SinglyLinkedList()
-linked_list.sorted_insert(5)
-linked_list.sorted_insert(2)
-linked_list.sorted_insert(8)
-print(linked_list)
