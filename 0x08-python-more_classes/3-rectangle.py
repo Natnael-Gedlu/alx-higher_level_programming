@@ -102,7 +102,9 @@ class Rectangle:
 
     def __str__(self):
         """
-        Return a string representation of the rectangle using '#'.
+        Return the printable representation of the Rectangle.
+
+        Represents the rectangle with the # character.
 
         Returns:
             str: A string representing the rectangle.
@@ -110,18 +112,9 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return ""
 
-        rect_str = ""
-        for _ in range(self.__height):
-            rect_str += "#" * self.__width + "\n"
-
-        return rect_str[:-1]  # Remove the trailing newline for proper printing
-
-    def __repr__(self):
-        """
-        Return a string representation of the rectangle suitable
-        for reproduction.
-
-        Returns:
-            str: A string representing the rectangle instance.
-        """
-        return f"Rectangle({self.__width}, {self.__height})"
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return "".join(rect)

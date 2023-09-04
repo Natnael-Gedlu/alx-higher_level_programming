@@ -5,6 +5,14 @@ Define a class Rectangle.
 
 
 class Rectangle:
+    """
+    This class represents a rectangle.
+
+    Attributes:
+        __width (int): The width of the rectangle.
+        __height (int): The height of the rectangle.
+    """
+
     def __init__(self, width=0, height=0):
         """
         Initializes a Rectangle instance with optional width and height.
@@ -13,8 +21,9 @@ class Rectangle:
             width (int, optional): The width of the rectangle. Defaults to 0.
             height (int, optional): The height of the rectangle. Defaults to 0.
         """
-        self.__width = 0
-        self.__height = 0
+
+        self.__width = 0  # Initialize width with 0
+        self.__height = 0  # Initialize height with 0
         self.width = width  # Use the property setter to set width
         self.height = height  # Use the property setter to set height
 
@@ -93,7 +102,9 @@ class Rectangle:
 
     def __str__(self):
         """
-        Return a string representation of the rectangle using '#'.
+        Return the printable representation of the Rectangle.
+
+        Represents the rectangle with the # character.
 
         Returns:
             str: A string representing the rectangle.
@@ -101,18 +112,20 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return ""
 
-        rect_str = ""
-        for _ in range(self.__height):
-            rect_str += "#" * self.__width + "\n"
-
-        return rect_str[:-1]  # Remove the trailing newline for proper printing
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return "".join(rect)
 
     def __repr__(self):
         """
-        Return a string representation of the rectangle
-        that allows for recreation.
+        Return the string representation of the Rectangle.
 
         Returns:
-            str: A string representation of the rectangle instance.
+            str: A string representing the Rectangle instance.
         """
-        return f"Rectangle({self.__width}, {self.__height})"
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
+        return rect
