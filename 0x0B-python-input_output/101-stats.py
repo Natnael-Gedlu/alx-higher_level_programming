@@ -1,20 +1,19 @@
 #!/usr/bin/python3
 """
-Reads from standard input and calculates metrics.
+Script that reads stdin line by line and computes metrics.
 """
 
 
 def print_stats(size, status_codes):
-    """Prints accumulated statistics.
+    """Prints the computed metrics.
 
     :parameter:
-        size (int): The total file size read so far.
-        status_codes (dict): A dictionary containing
-        the count of each status code.
+        size (int): read file size
+        status_codes (dict): count of status codes
     """
-    print("Total file size: {}".format(size))
+    print("File size: {}".format(size))
     for key in sorted(status_codes):
-        print("Status Code {}: Count: {}".format(key, status_codes[key]))
+        print("{}: {}".format(key, status_codes[key]))
 
 
 if __name__ == "__main__":
