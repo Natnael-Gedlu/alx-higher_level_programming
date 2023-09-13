@@ -9,4 +9,4 @@ def from_json_string(my_str):
     """
     function returns the object representation of JSON string.
     """
-    return json.load(my_str)
+    return json.loads(my_str)
