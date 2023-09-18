@@ -53,3 +53,47 @@ class Base:
 
         with open(filename, 'w') as file:
             file.write(json_str)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serialize instances to CSV format and save them to a file.
+
+        :param cls: The class itself.
+        :param list_objs: A list of instances that inherit from Base.
+        """
+        filename = cls.__name__ + ".csv"
+
+        with open(filename, 'w') as file:
+            if cls.__name__ == "Rectangle":
+                for obj in list_objs:
+                    file.write(f"{obj.id},{obj.width},{obj.height},{obj.x},{obj.y}\n")
+            elif cls.__name__ == "Square":
+                for obj in list_objs:
+                    file.write(f"{obj.id},{obj.size},{obj.x},{obj.y}\n")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserialize instances from a CSV file and return a list of instances.
+
+        :param cls: The class itself.
+        :return: A list of instances.
+        """
+        filename = cls.__name__ + ".csv"
+        instances = []
+
+        try:
+            with open(filename, 'r') as file:
+                lines = file.readlines()
+                for line in lines:
+                    values = line.strip().split(',')
+                    if cls.__name__ == "Rectangle":
+                        obj = cls(int(values[1]), int(values[2]), int(values[3]), int(values[4]), int(values[0]))
+                    elif cls.__name__ == "Square":
+                        obj = cls(int(values[1]), int(values[2]), int(values[3]), int(values[0]))
+                    instances.append(obj)
+        except FileNotFoundError:
+            pass
+
+        return instances
