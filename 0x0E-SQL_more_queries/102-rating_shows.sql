@@ -4,4 +4,3 @@ FROM tv_shows t
 LEFT JOIN tv_show_ratings r ON r.show_id = t.id
 GROUP BY t.title
 ORDER BY rating DESC;
-
