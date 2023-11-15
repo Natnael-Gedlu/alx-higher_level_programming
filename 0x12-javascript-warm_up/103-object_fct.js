@@ -1,5 +1,3 @@
-103-object_fct.js
-
 #!/usr/bin/node
 const myObject = {
   type: 'object',
