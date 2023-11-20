@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-script that lists all states from the database.
+Script that lists all states with a name starting with N.
 """
 import sys
 import MySQLdb
