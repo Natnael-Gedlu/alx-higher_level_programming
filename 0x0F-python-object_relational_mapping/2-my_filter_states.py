@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script that lists all states with a name starting with N.
+script displays all values in the states table
+of hbtn_0e_0_usa where the name matches the provided argument.
 """
 import sys
 import MySQLdb
@@ -13,9 +14,9 @@ if __name__ == "__main__":
     query = """
         SELECT *
         FROM states
-        WHERE name LIKE 'N%'
+        WHERE name = '{}'
         ORDER BY id ASC
-    """
+    """.format(sys.argv[4])
     cursor.execute(query)
     rows = cursor.fetchall()
     for row in rows:
