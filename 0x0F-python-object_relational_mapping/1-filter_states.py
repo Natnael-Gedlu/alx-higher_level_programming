@@ -13,8 +13,8 @@ if __name__ == "__main__":
     query = """
         SELECT *
         FROM states
-        WHERE name LIKE 'N%'
-        ORDER BY id ASC
+        WHERE name LIKE BINARY 'N%'
+        ORDER BY states.id
     """
     cursor.execute(query)
     rows = cursor.fetchall()

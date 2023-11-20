@@ -15,7 +15,7 @@ if __name__ == "__main__":
         SELECT *
         FROM states
         WHERE name = '{}'
-        ORDER BY id ASC
+        ORDER BY states.id
     """.format(sys.argv[4])
     cursor.execute(query)
     rows = cursor.fetchall()
